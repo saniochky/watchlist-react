@@ -1,0 +1,129 @@
+.recommendations {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 20px;
+    background-color: rgba(222, 242, 241, 0.7);
+    border: 3px solid #2b7a77;
+    border-radius: 10px;
+}
+
+.recommendations h2 {
+    font-size: 2rem;
+}
+
+.recommendations h3 {
+    font-size: 1.5rem;
+}
+
+.recommendations p {
+    font-size: 1.1rem;
+}
+
+.poster {
+    width: 20rem;
+    aspect-ratio: 2/3;
+    height: 30rem;
+    border-radius: 12px;
+}
+
+.next {
+    width: 100%;
+    position: relative;
+    font-size: 4rem !important;
+    font-weight: 600;
+    color: #2b7a77;
+    padding: 0.3rem 4.5rem;
+    border: 3px solid #2b7a77;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.next:after {
+    content: '➜';
+    position: absolute;
+    opacity: 0;
+    top: -0.1rem;
+    right: 15rem;
+    transition: 0.5s;
+}
+
+.next:hover {
+    background-color: #17242a;
+    padding-left: 3.5rem;
+    padding-right: 5.5rem;
+}
+
+.next:hover:after {
+    opacity: 1;
+    right: 2rem;
+}
+
+.title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.info {
+    padding-inline-start: 3rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.like {
+    background-color: green;
+    border: 2px solid #17242a;
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.like:hover {
+    color: white;
+}
+
+.dislike {
+    background-color: red;
+    border: 2px solid #17242a;
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.dislike:hover {
+    color: white;
+}
+
+.add {
+    background-color: #17242a;
+    color: #2b7a77;
+    padding: 1rem;
+    border: 2px solid #2b7a77;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+
+.add svg {
+    padding: 0 0.3rem;
+}
+
+.add:hover {
+    color: #f07c41;
+    border-color: #f07c41;
+}

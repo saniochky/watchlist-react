@@ -1,0 +1,11 @@
+.backlightCard {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.backlightCard:hover {
+    margin-top: -5px;
+    margin-left: 5px;
+}

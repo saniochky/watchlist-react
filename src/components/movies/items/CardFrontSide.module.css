@@ -1,0 +1,82 @@
+.card {
+    width: 100%;
+    height: 100%;
+    padding: 0.4rem;
+    background-color: rgba(58, 175, 169, 0.5);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.loading {
+    position: relative;
+}
+
+.poster {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.poster svg {
+    color: grey;
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    top: calc(50% - 1.75rem);
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.title {
+    height: 3.9rem;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.title h3 {
+    display: -webkit-box;
+    color: #17242a;
+    font-weight: 600;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.leftIcon {
+    left: calc(25% - 1.75rem);
+}
+
+.leftIcon:hover {
+    color: green;
+    opacity: 100%;
+    filter: drop-shadow(0 0 15px green);
+}
+
+.rightIcon {
+    left: calc(75% - 1.75rem);
+}
+
+.rightIcon:hover {
+    color: red;
+    opacity: 100%;
+    filter: drop-shadow(0 0 15px red);
+}
+
+.button {
+    padding: 0.4rem 0.7rem;
+    color: #17242a;
+    border: 2px solid #17242a;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
