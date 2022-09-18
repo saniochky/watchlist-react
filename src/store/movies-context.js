@@ -23,13 +23,14 @@ export const MoviesContextProvider = (props) => {
     const [watchlist, setWatchlist] = useState([]);
     const [watched, setWatched] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
         // setWatched([1, 2, 3, 4, 5, 6]);
         // setWatchlist([7, 8, 9, 10, 11, 12]);
         setIsLoading(false);
+        setError(false);
     }, []);
 
     const addMovieToWatchlistHandler = (movieData) => {
