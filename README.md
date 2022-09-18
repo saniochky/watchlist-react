@@ -1,10 +1,10 @@
 # [Watchlist React app](https://movie-watchlister.netlify.app/)
 
-**Watchlist React app is my Pet-project demonstrating my FrontEnd (React) skills and knowledge.
+**Watchlist React app is my Pet-project demonstrating my FrontEnd (React) skills and knowledge.**
 
-The primary purpose of this application is to help users organize information about the movies, in particular, find new movies, save the ones they want to watch, and rate the films they have already seen. 
+**The primary purpose of this application is to help users organize information about the movies, in particular, find new movies, save the ones they want to watch, and rate the films they have already seen.**
 
-This project is developed and hosted for demonstration purposes only.**
+**This project is developed and hosted for demonstration purposes only.**
 
 ## Implemented technologies
 
