@@ -1,6 +1,6 @@
 # [Watchlist React app](https://movie-watchlister.netlify.app/)
 
-Watchlist React app is my Pet-project which demonstrates my FrontEnd(React) skills and knowledge.
+Watchlist React app is my Pet-project demonstrating my FrontEnd(React) skills and knowledge.
 
 This project is developed and hosted for demonstration purposes only. 
 
@@ -20,13 +20,13 @@ Hooks that I've used in this project:
 
 ### Custom Hooks
 
-I have also written custom hook useHttp, which helps loading data and transforming data via API.
+I have also written a custom hook useHttp, which helps load and transform data via API.
 
 ## External libraries
 
 ### react-router-dom
 
-Was used to implement routing in app.
+Was used to implement routing in the app.
 
 ### framer-motion
 
@@ -38,12 +38,12 @@ Was used to add svgs across the app.
 
 ### react-card-flip
 
-Was used to create flip effect on the Watchlist and Watched pages.
+Was used to create the flip effect on the Watchlist and Watched pages.
 
 ## Hosting
 
-The app was hosted on [netlify](https://www.netlify.com/) under the domen https://movie-watchlister.netlify.app/.
+The app was hosted on [netlify](https://www.netlify.com/) under the domain https://movie-watchlister.netlify.app/.
 
 ## API
 
-For movies recommendations and eventually across the application I use [TMDB API](https://www.themoviedb.org/).
+For movie recommendations and, eventually, across the application, I use [TMDB API](https://www.themoviedb.org/documentation/api).
