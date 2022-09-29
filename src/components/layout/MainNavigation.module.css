@@ -37,10 +37,27 @@
     color: #def2f1;
 }
 
+.header button {
+    font: inherit;
+    background-color: transparent;
+    border: 1px solid #def2f1;
+    color: #def2f1;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .header a:hover,
 .header a:active,
 .header a.active {
     color: #f07c41;
+}
+
+.header button:hover {
+    background-color: darkred;
+    border-color: indianred;
+    color: indianred;
 }
 
 .header svg {

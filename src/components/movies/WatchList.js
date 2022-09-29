@@ -13,7 +13,7 @@ const WatchList = () => {
 
     if (moviesCtx.error) return <h2>Oops, something went wrong. Try Again!</h2>;
 
-    let content = <h3>The Watched List is empty.</h3>;
+    let content = <h3>The Watchlist is empty.</h3>;
 
     if (moviesCtx.watchlistCount > 0) {
         content = (

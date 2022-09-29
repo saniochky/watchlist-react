@@ -1,0 +1,34 @@
+.login {
+    margin: calc(50% - 5rem) auto 0;
+    width: 95%;
+    max-width: 25rem;
+    border-radius: 6px;
+    background-color: #2b7a77;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    transform: translateY(-50%);
+}
+
+.login h2 {
+    text-align: center;
+    padding-bottom: 1rem;
+    color: white;
+}
+
+.login p {
+    text-align: center;
+    color: white;
+}
+
+.login span {
+    color: #17242a;
+    text-decoration: #17242a underline dotted;
+    cursor: pointer;
+}
+
+.login span:hover {
+    color: #f07c41;
+    text-decoration: #f07c41 underline dotted;
+}
