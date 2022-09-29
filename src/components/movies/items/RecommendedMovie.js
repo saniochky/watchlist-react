@@ -42,7 +42,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         onClick={() => {
                             moviesCtx.addMovieToWatchlist({
                                 id: movie.id,
-                                addedDate: new Date(Date.now()).toISOString(),
+                                addedDate: new Date().toISOString(),
                             });
                             fetchMovie()
                         }}>

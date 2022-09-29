@@ -103,11 +103,11 @@ export const MoviesContextProvider = (props) => {
     };
 
     const likeMovieHandler = (movieId) => {
-        addMovieToWatchedHandler({id: movieId, addedDate: new Date(Date.now()).toISOString(), liked: true});
+        addMovieToWatchedHandler({id: movieId, addedDate: new Date().toISOString(), liked: true});
     };
 
     const dislikeMovieHandler = (movieId) => {
-        addMovieToWatchedHandler({id: movieId, addedDate: new Date(Date.now()).toISOString(), liked: false});
+        addMovieToWatchedHandler({id: movieId, addedDate: new Date().toISOString(), liked: false});
     };
 
     const removeMovieFromWatchlistHandler = (movieId) => {
@@ -145,7 +145,7 @@ export const MoviesContextProvider = (props) => {
                 return response.json();
             }).then(data => {
                 console.log(data);
-                addMovieToWatchlistHandler({id: movieId, addedDate: new Date(Date.now()).toISOString()});
+                addMovieToWatchlistHandler({id: movieId, addedDate: new Date().toISOString()});
             }).then(error => {
                 console.log(error);
                 return 'error';
