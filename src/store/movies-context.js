@@ -1,4 +1,5 @@
-import {createContext, useState, useEffect} from 'react';
+import {createContext, useState, useEffect, useContext} from 'react';
+import AuthContext from './auth-context';
 
 const MoviesContext = createContext({
     watchlist: [],
@@ -26,33 +27,37 @@ export const MoviesContextProvider = (props) => {
     const [watched, setWatched] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const authCtx = useContext(AuthContext);
 
     useEffect(() => {
-        setIsLoading(true);
-        fetch('https://movie-watchlister-api.herokuapp.com/api/movies/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token'),
-            },
-        }).then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return response.json().then(data => {
-                    throw new Error(data.message);
-                });
-            }
-        }).then(data => {
-            setIsLoading(false);
-            setWatchlist(data.watchlist);
-            setWatched(data.watched);
-        }).catch(error => {
-            setIsLoading(false);
-            setError(error.message);
-            return 'error';
-        });
-    }, []);
+        if (authCtx.isLoggedIn) {
+            setIsLoading(true);
+            fetch('https://movie-watchlister-api.herokuapp.com/api/movies/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                },
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    return response.json().then(data => {
+                        console.log(data);
+                        throw new Error(data.message);
+                    });
+                }
+            }).then(data => {
+                setIsLoading(false);
+                setWatchlist(data.watchlist);
+                setWatched(data.watched);
+            }).catch(error => {
+                setIsLoading(false);
+                setError(error.message);
+                return 'error';
+            });
+        }
+    }, [authCtx.isLoggedIn]);
 
     const addMovieToWatchlistHandler = (movieData) => {
         if (!watchlist.some(movie => movie.id === movieData.id)) {
