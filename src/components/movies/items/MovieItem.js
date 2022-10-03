@@ -3,7 +3,6 @@ import ReactCardFlip from 'react-card-flip';
 import CardFrontSide from './CardFrontSide';
 import CardBackSide from './CardBackSide';
 import BacklightCard from '../../ui/BacklightCard';
-import LoadingIndicator from '../../ui/LoadingIndicator';
 
 import styles from './MovieItem.module.css';
 
@@ -15,17 +14,21 @@ const MovieItem = forwardRef((props, ref) => {
 
     useEffect(() => {
         const abortController = new AbortController();
-        fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
-            signal: abortController.signal,
-        }).then(
-            response => response.json()
-        ).then(
-            movieData => setMovieData(movieData)
-        ).catch(
-            error => {
-                console.log(error);
-            }
-        );
+        setTimeout(() => {
+            fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
+                signal: abortController.signal,
+            }).then(
+                response => response.json()
+            ).then(
+                movieData => setMovieData(movieData)
+            ).catch(
+                error => {
+                    console.log(error);
+                }
+            );
+        }, 2000);
+
+        return () => abortController.abort();
     }, [props.movieId]);
 
     const flipCardHandler = () => {
@@ -43,10 +46,9 @@ const MovieItem = forwardRef((props, ref) => {
         }
     };
 
-    if (!movieData) return <li><LoadingIndicator/></li>;
-
     const frontSide = (
         <CardFrontSide
+            loading={!movieData}
             movie={movieData}
             leftActionIcon={props.leftIcon}
             rightActionIcon={props.rightIcon}
@@ -75,6 +77,7 @@ const MovieItem = forwardRef((props, ref) => {
                     </BacklightCard>
                     <BacklightCard>
                         <CardBackSide
+                            loading={!movieData}
                             movie={movieData}
                             flipCard={flipCardHandler}
                         />

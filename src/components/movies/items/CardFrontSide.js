@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import LoadingIndicator from '../../ui/LoadingIndicator';
 
 import styles from './CardFrontSide.module.css';
 
@@ -19,7 +20,7 @@ const CardFrontSide = (props) => {
     };
 
     return (
-        <div
+        props.loading ? <div className={styles.card}><LoadingIndicator/></div> : <div
             className={styles.card}
             onMouseEnter={() => setControlsVisible(true)}
             onMouseLeave={() => setControlsVisible(false)}
