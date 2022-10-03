@@ -14,19 +14,17 @@ const MovieItem = forwardRef((props, ref) => {
 
     useEffect(() => {
         const abortController = new AbortController();
-        setTimeout(() => {
-            fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
-                signal: abortController.signal,
-            }).then(
-                response => response.json()
-            ).then(
-                movieData => setMovieData(movieData)
-            ).catch(
-                error => {
-                    console.log(error);
-                }
-            );
-        }, 2000);
+        fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
+            signal: abortController.signal,
+        }).then(
+            response => response.json()
+        ).then(
+            movieData => setMovieData(movieData)
+        ).catch(
+            error => {
+                console.log(error);
+            }
+        );
 
         return () => abortController.abort();
     }, [props.movieId]);
