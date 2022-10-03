@@ -24,7 +24,7 @@ export const AuthContextProvider = (props) => {
 
     const registerHandler = (username, password) => {
         setLoading(true);
-        fetch('https://movie-watchlister-api.herokuapp.com/api/auth/register', {
+        return fetch('https://movie-watchlister-api.herokuapp.com/api/auth/register', {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {
@@ -44,7 +44,7 @@ export const AuthContextProvider = (props) => {
         }).catch(error => {
             setLoading(false);
             setError(error.message);
-            return 'error';
+            return {message: 'error'};
         });
     };
 
@@ -71,7 +71,7 @@ export const AuthContextProvider = (props) => {
         }).catch(error => {
             setLoading(false);
             setError(error.message);
-            return 'error';
+            return {message: 'error'};
         });
     };
 

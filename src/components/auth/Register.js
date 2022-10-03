@@ -12,7 +12,7 @@ const Register = () => {
 
     const registerHandler = (username, password) => {
         authCtx.register(username, password).then(data => {
-            if (data !== 'error') {
+            if (data.message !== 'error') {
                 navigate('/login');
             }
         });
