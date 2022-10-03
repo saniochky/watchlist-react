@@ -32,7 +32,7 @@ Was used to implement routing in the app.
 
 ### framer-motion
 
-Was used to add animations to the main page.
+Was used to add animations across the app.
 
 ### @fortawesome/react-fontawesome
 
