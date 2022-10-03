@@ -14,10 +14,17 @@ const MovieItem = forwardRef((props, ref) => {
     const flippable = props.flippable || false;
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`).then(
+        const abortController = new AbortController();
+        fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
+            signal: abortController.signal,
+        }).then(
             response => response.json()
         ).then(
             movieData => setMovieData(movieData)
+        ).catch(
+            error => {
+                console.log(error);
+            }
         );
     }, [props.movieId]);
 
