@@ -54,6 +54,6 @@ For movie recommendations and, eventually, across the application, I use [TMDB A
 
 ## Future releases
 
-I plan to ~~add a login page and write a backend for this app~~ (done).
+~~I plan to add a login page and write a backend for this app~~ (done).
 
 I am also working on a mobile version of the app. Furthermore, I want to add movie filters and search, and user search. I hope that these and many other updates will be available in the nearest future.
