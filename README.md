@@ -22,7 +22,7 @@ Hooks that I've used in this project:
 
 ### Custom Hooks
 
-I have also written a custom hook useHttp, which helps load and transform data via API.
+I have also written a custom hook **useHttp**, which helps load and transform data via API, and **useInput**, which helps dealing with input values and its validation.
 
 ## External libraries
 
@@ -32,7 +32,7 @@ Was used to implement routing in the app.
 
 ### framer-motion
 
-Was used to add animations to the main page.
+Was used to add animations across the app.
 
 ### @fortawesome/react-fontawesome
 
@@ -48,8 +48,12 @@ The app is hosted on [netlify](https://www.netlify.com/) under the domain https:
 
 ## API
 
+For login and overall user information I use my own [API](https://github.com/saniochky/watchlist-api) written with **Express.js**, which connects to **MongoDB**.
+
 For movie recommendations and, eventually, across the application, I use [TMDB API](https://www.themoviedb.org/documentation/api).
 
 ## Future releases
 
-I plan to add a login page and write a backend for this app since, for now, users' chosen movies are not saved anywhere. I am also working on a mobile version of the app. Furthermore, I want to add movie search and user search. I hope that these and many other updates will be available in the nearest future.
+~~I plan to add a login page and write a backend for this app~~ (done).
+
+I am also working on a mobile version of the app. Furthermore, I want to add movie filters and search, and user search. I hope that these and many other updates will be available in the nearest future.
