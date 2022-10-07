@@ -1,0 +1,37 @@
+.filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 2rem 1rem;
+}
+
+.sortby {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.sortby label {
+    font: inherit;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.filterby button {
+    border: none;
+    font: inherit;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: transparent;
+    color: #17242a;
+    cursor: pointer;
+}
+
+.filterby button:hover {
+    color: #f07c41;
+}

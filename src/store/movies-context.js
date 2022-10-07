@@ -53,11 +53,14 @@ export const MoviesContextProvider = (props) => {
                 setWatched(data.watched);
             }).catch(error => {
                 setIsLoading(false);
+                if (error.message === 'Invalid token') {
+                    authCtx.logout();
+                }
                 setError(error.message);
                 return 'error';
             });
         }
-    }, [authCtx.isLoggedIn]);
+    }, [authCtx, authCtx.isLoggedIn, authCtx.logout]);
 
     const addMovieToWatchlistHandler = (movieData) => {
         if (!watchlist.some(movie => movie.id === movieData.id)) {

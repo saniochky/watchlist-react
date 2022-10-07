@@ -1,0 +1,68 @@
+.filterModal {
+    text-align: start;
+}
+
+.section {
+    padding-bottom: 1rem;
+}
+
+.item {
+    width: 100%;
+    height: 4rem;
+    margin: 1rem 0 0;
+    text-align: center;
+    color: #2b7a77;
+    border: #2b7a77 1px solid;
+    border-radius: 8px;
+    background-color: #17242a;
+    font: inherit;
+    cursor: pointer;
+}
+
+.item:hover, .item.selected {
+    background-color: #17242a;
+    color: #f07c41;
+    border-color: #f07c41;
+}
+
+.range {
+    padding: 0 0.55rem;
+}
+
+.rangeValues {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 2px;
+}
+
+.rangeValues span {
+    color: #17242a;
+    font: inherit;
+    font-weight: bold;
+}
+
+.btn {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #f07c41;
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+}
+
+.btn:hover {
+    background-color: #f07c41;
+    color: white;
+}
+
+
+.cancel {
+    border-color: lightgrey;
+}
+.cancel:hover {
+    background-color: darkred;
+    border-color: darkred;
+    color: white;
+}

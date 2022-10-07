@@ -6,7 +6,7 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import MoviesContext from '../../store/movies-context';
 import {faThumbsUp, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
-const WatchList = () => {
+const WatchList = (props) => {
     const moviesCtx = useContext(MoviesContext);
 
     if (moviesCtx.isLoading) return <LoadingIndicator/>;
@@ -18,7 +18,7 @@ const WatchList = () => {
     if (moviesCtx.watchlistCount > 0) {
         content = (
             <List>
-                {moviesCtx.watchlist.map((movie, i) => (
+                {moviesCtx.watchlist.sort(props.sortBy).map((movie, i) => (
                     <motion.div
                         key={movie.id}
                         variants={{
