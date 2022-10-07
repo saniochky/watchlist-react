@@ -19,7 +19,8 @@ const WatchlistPage = () => {
         <>
             <h1>Watchlist Page</h1>
             <MovieFilter sortBy={sortOption} setSort={setSortOption} setFilters={setFilters}/>
-            <WatchList sortBy={sortingFunctions[sortOption.value]}/>
+            {/*sortingFunctions[sortOption.value]*/}
+            <WatchList sortBy={sortingFunctions.date}/>
         </>
     );
 };
