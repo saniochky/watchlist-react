@@ -18,7 +18,11 @@ const WatchList = (props) => {
     if (moviesCtx.watchlistCount > 0) {
         content = (
             <List>
-                {moviesCtx.watchlist.sort(props.sortBy).map((movie, i) => (
+                {moviesCtx.watchlist.sort(props.sortBy)
+                    .filter(props.filterGenres)
+                    .filter(props.filterYear)
+                    .filter(props.filterRating)
+                    .map((movie, i) => (
                     <motion.div
                         key={movie.id}
                         variants={{
@@ -34,7 +38,7 @@ const WatchList = (props) => {
                         custom={i}
                     >
                         <MovieItem
-                            movieId={movie.id}
+                            movie={movie}
                             leftIcon={faThumbsUp}
                             rightIcon={faThumbsDown}
                             leftIconTitle="Like"

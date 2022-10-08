@@ -37,4 +37,43 @@ const SORTING_VALUES = [
     'vote_count.desc',
 ];
 
-export {GENRES, SORTING_VALUES};
+const SORTING_FUNCTIONS = {
+    date: (a, b) => new Date(a.addedDate) - new Date(b.addedDate),
+    title: (a, b) => a.title.localeCompare(b.title),
+    yearAsc: (a, b) => new Date(a.release_date) - new Date(b.release_date),
+    yearDes: (a, b) => new Date(b.release_date) - new Date(a.release_date),
+    ratingAsc: (a, b) => a.vote_average - b.vote_average,
+    ratingDes: (a, b) => b.vote_average - a.vote_average,
+};
+
+const FILTERS = {
+    liked: (value) => {
+        if (value === 'Both') {
+            return () => true;
+        } else if (value === 'Liked') {
+            return (movie) => movie.liked;
+        } else {
+            return (movie) => !movie.liked;
+        }
+    },
+    genres: (value) => {
+        if (value.includes('All')) {
+            return () => true;
+        } else {
+            return (movie) => movie.genres.map(obj => obj.name).filter(genre => value.includes(genre)).length > 0;
+        }
+    },
+    year: (value) => {
+        return (movie) => {
+            const year = new Date(movie.release_date).getFullYear();
+            return value[0] <= year && year <= value[1];
+        };
+    },
+    rating: (value) => {
+        return (movie) => {
+            return value[0] <= movie.vote_average && movie.vote_average <= value[1];
+        };
+    },
+};
+
+export {GENRES, SORTING_VALUES, SORTING_FUNCTIONS, FILTERS};

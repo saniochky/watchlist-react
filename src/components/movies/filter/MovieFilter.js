@@ -38,7 +38,7 @@ const selectStyles = {
     }),
 };
 
-const MovieFilter = ({sortBy, setSort, setFilters, likelihood = true}) => {
+const MovieFilter = ({sortBy, setSort, defaultFilters, setFilters, likelihood = true}) => {
     const [showFilters, setShowFilters] = useState(false);
 
     return (
@@ -50,8 +50,8 @@ const MovieFilter = ({sortBy, setSort, setFilters, likelihood = true}) => {
             </div>
             <div className={styles.filterby}>
                 <button onClick={() => setShowFilters(true)}>Filter <FontAwesomeIcon icon={faGears}/></button>
-                {showFilters && <FilterModal likelihood={likelihood} setFilters={setFilters}
-                                             onClose={() => setShowFilters(false)}
+                {showFilters && <FilterModal likelihood={likelihood} defaultFilters={defaultFilters}
+                                             setFilters={setFilters} onClose={() => setShowFilters(false)}
                 />}
             </div>
         </div>

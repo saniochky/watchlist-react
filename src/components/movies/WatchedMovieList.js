@@ -6,7 +6,7 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import MoviesContext from '../../store/movies-context';
 import {faMagnifyingGlass, faCircleXmark} from '@fortawesome/free-solid-svg-icons';
 
-const WatchedMovieList = () => {
+const WatchedMovieList = (props) => {
     const moviesCtx = useContext(MoviesContext);
     const itemsRef = useRef({});
 
@@ -25,7 +25,12 @@ const WatchedMovieList = () => {
     if (moviesCtx.watchedCount > 0) {
         content = (
             <List>
-                {moviesCtx.watched.map((movie, i) => (
+                {moviesCtx.watched.sort(props.sortBy)
+                    .filter(props.filterLiked)
+                    .filter(props.filterGenres)
+                    .filter(props.filterYear)
+                    .filter(props.filterRating)
+                    .map((movie, i) => (
                     <motion.div
                         key={movie.id}
                         variants={{
@@ -43,7 +48,7 @@ const WatchedMovieList = () => {
                         <MovieItem
                             key={movie.id}
                             ref={el => itemsRef.current[movie.id] = el}
-                            movieId={movie.id}
+                            movie={movie}
                             flippable
                             flipUpCards={flipUpCardsHandler}
                             leftIcon={faMagnifyingGlass}

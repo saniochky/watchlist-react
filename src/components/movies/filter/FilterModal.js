@@ -24,11 +24,11 @@ const sliderStyle = {
     },
 };
 
-const FilterModal = ({onClose, setFilters, likelihood}) => {
-    const [liked, setLiked] = useState('Both');
-    const [genres, setGenres] = useState(['All']);
-    const [yearRange, setYearRange] = useState([1950, 2022]);
-    const [ratingRange, setRatingRange] = useState([0.0, 10.0]);
+const FilterModal = ({onClose, setFilters, defaultFilters, likelihood}) => {
+    const [liked, setLiked] = useState(likelihood ? defaultFilters.liked : 'Both');
+    const [genres, setGenres] = useState(defaultFilters.genres);
+    const [yearRange, setYearRange] = useState(defaultFilters.year);
+    const [ratingRange, setRatingRange] = useState(defaultFilters.rating);
 
     const genreClickHandler = (genre) => {
         if (genre === 'All' && !genres.includes('All')) {

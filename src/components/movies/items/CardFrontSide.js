@@ -34,7 +34,7 @@ const CardFrontSide = (props) => {
                         title={props.leftActionTitle}
                         icon={props.leftActionIcon}
                         className={styles.leftIcon}
-                        onClick={() => props.leftActionHandler(props.movie.id)}
+                        onClick={() => props.leftActionHandler(props.movie)}
                         onMouseEnter={() => {
                             props.changeBacklightCardStyle('GREEN');
                             setPosterBlur({filter: 'blur(3px)'});
@@ -48,7 +48,7 @@ const CardFrontSide = (props) => {
                         title={props.rightActionTitle}
                         icon={props.rightActionIcon}
                         className={styles.rightIcon}
-                        onClick={() => props.rightActionHandler(props.movie.id)}
+                        onClick={() => props.rightActionHandler(props.movie)}
                         onMouseEnter={() => {
                             props.changeBacklightCardStyle('RED');
                             setPosterBlur({filter: 'blur(3px)'});
@@ -66,7 +66,7 @@ const CardFrontSide = (props) => {
                     title={props.buttonTitle}
                     className={styles.button}
                     style={buttonStyle}
-                    onClick={() => props.buttonClickHandler(props.movie.id)}
+                    onClick={() => props.buttonClickHandler(props.movie)}
                     onMouseEnter={() => {
                         setButtonStyle(hoverButtonStyle);
                         props.changeBacklightCardStyle(buttonBacklightHoverColor);

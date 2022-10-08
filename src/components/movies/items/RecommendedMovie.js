@@ -27,7 +27,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         title="Like"
                         className={styles.like}
                         onClick={() => {
-                            moviesCtx.likeMovie(movie.id);
+                            moviesCtx.likeMovie(movie);
                             fetchMovie();
                         }}
                     >
@@ -56,7 +56,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         title="Dislike"
                         className={styles.dislike}
                         onClick={() => {
-                            moviesCtx.dislikeMovie(movie.id);
+                            moviesCtx.dislikeMovie(movie);
                             fetchMovie();
                         }}
                     >

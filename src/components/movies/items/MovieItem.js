@@ -1,4 +1,4 @@
-import {useState, useEffect, useImperativeHandle, forwardRef} from 'react';
+import {useState, useImperativeHandle, forwardRef} from 'react';
 import ReactCardFlip from 'react-card-flip';
 import CardFrontSide from './CardFrontSide';
 import CardBackSide from './CardBackSide';
@@ -8,26 +8,8 @@ import styles from './MovieItem.module.css';
 
 const MovieItem = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({flipUpCard: flipUpCardHandler}));
-    const [movieData, setMovieData] = useState(null);
     const [isFlipped, setIsFlipped] = useState(false);
     const flippable = props.flippable || false;
-
-    useEffect(() => {
-        const abortController = new AbortController();
-        fetch(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`, {
-            signal: abortController.signal,
-        }).then(
-            response => response.json()
-        ).then(
-            movieData => setMovieData(movieData)
-        ).catch(
-            error => {
-                console.log(error);
-            }
-        );
-
-        return () => abortController.abort();
-    }, [props.movieId]);
 
     const flipCardHandler = () => {
         setIsFlipped((prevState) => {
@@ -46,8 +28,7 @@ const MovieItem = forwardRef((props, ref) => {
 
     const frontSide = (
         <CardFrontSide
-            loading={!movieData}
-            movie={movieData}
+            movie={props.movie}
             leftActionIcon={props.leftIcon}
             rightActionIcon={props.rightIcon}
             leftActionTitle={props.leftIconTitle}
@@ -75,8 +56,7 @@ const MovieItem = forwardRef((props, ref) => {
                     </BacklightCard>
                     <BacklightCard>
                         <CardBackSide
-                            loading={!movieData}
-                            movie={movieData}
+                            movie={props.movie}
                             flipCard={flipCardHandler}
                         />
                     </BacklightCard>
