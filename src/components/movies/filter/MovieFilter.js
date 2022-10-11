@@ -7,7 +7,8 @@ import {faGears} from '@fortawesome/free-solid-svg-icons';
 import styles from './MovieFilter.module.css';
 
 const options = [
-    {value: 'date', label: 'Addition Date'},
+    {value: 'dateDes', label: 'Newest Added'},
+    {value: 'dateAsc', label: 'Oldest Added'},
     {value: 'title', label: 'Title'},
     {value: 'yearAsc', label: 'Year Ascending'},
     {value: 'yearDes', label: 'Year Descending'},

@@ -4,7 +4,7 @@ import WatchedMovieList from '../components/movies/WatchedMovieList';
 import {FILTERS, SORTING_FUNCTIONS} from '../constants/constants';
 
 const WatchedPage = () => {
-    const [sortOption, setSortOption] = useState({value: 'date', label: 'Addition Date'});
+    const [sortOption, setSortOption] = useState({value: 'dateDes', label: 'Newest Added'});
     const [filters, setFilters] = useState({
         liked: 'Both',
         genres: ['All'],

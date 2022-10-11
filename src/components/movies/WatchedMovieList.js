@@ -12,7 +12,9 @@ const WatchedMovieList = (props) => {
 
     const flipUpCardsHandler = () => {
         for (const itemId in itemsRef.current) {
-            itemsRef.current[itemId].flipUpCard();
+            if (moviesCtx.watched.some(item => item.id === itemId)) {
+                itemsRef.current[itemId].flipUpCard();
+            }
         }
     };
 

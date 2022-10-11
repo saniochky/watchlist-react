@@ -38,7 +38,8 @@ const SORTING_VALUES = [
 ];
 
 const SORTING_FUNCTIONS = {
-    date: (a, b) => new Date(a.addedDate) - new Date(b.addedDate),
+    dateAsc: (a, b) => new Date(a.addedDate) - new Date(b.addedDate),
+    dateDes: (a, b) => new Date(b.addedDate) - new Date(a.addedDate),
     title: (a, b) => a.title.localeCompare(b.title),
     yearAsc: (a, b) => new Date(a.release_date) - new Date(b.release_date),
     yearDes: (a, b) => new Date(b.release_date) - new Date(a.release_date),

@@ -4,7 +4,7 @@ import WatchList from '../components/movies/WatchList';
 import {FILTERS, SORTING_FUNCTIONS} from '../constants/constants';
 
 const WatchlistPage = () => {
-    const [sortOption, setSortOption] = useState({value: 'date', label: 'Addition Date'});
+    const [sortOption, setSortOption] = useState({value: 'dateDes', label: 'Newest Added'});
     const [filters, setFilters] = useState({
         genres: ['All'],
         rating: [0.0, 10.0],
