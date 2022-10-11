@@ -4,7 +4,7 @@ import List from '../ui/List';
 import MovieItem from './items/MovieItem';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import MoviesContext from '../../store/movies-context';
-import {faMagnifyingGlass, faCircleXmark} from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass, faCircleXmark, faThumbsUp, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
 const WatchedMovieList = (props) => {
     const moviesCtx = useContext(MoviesContext);
@@ -33,37 +33,38 @@ const WatchedMovieList = (props) => {
                     .filter(props.filterYear)
                     .filter(props.filterRating)
                     .map((movie, i) => (
-                    <motion.div
-                        key={movie.id}
-                        variants={{
-                            hidden: {opacity: 0, y: 50},
-                            visible: (i) => ({
-                                opacity: 1,
-                                y: 0,
-                                transition: {delay: i * 0.1}
-                            }),
-                        }}
-                        initial="hidden"
-                        animate="visible"
-                        custom={i}
-                    >
-                        <MovieItem
+                        <motion.div
                             key={movie.id}
-                            ref={el => itemsRef.current[movie.id] = el}
-                            movie={movie}
-                            flippable
-                            flipUpCards={flipUpCardsHandler}
-                            leftIcon={faMagnifyingGlass}
-                            rightIcon={faCircleXmark}
-                            leftIconTitle="View details"
-                            rightIconTitle="Remove movie from the Watched"
-                            rightAction={moviesCtx.removeMovieFromWatched}
-                            buttonName="Watch"
-                            buttonTitle={"Rewatch movie"}
-                            buttonClickHandler={() => window.open('https://rezka.ag/', '_blank', 'noopener,noreferrer')}
-                        />
-                    </motion.div>
-                ))}
+                            variants={{
+                                hidden: {opacity: 0, y: 50},
+                                visible: (i) => ({
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: {delay: i * 0.1}
+                                }),
+                            }}
+                            initial="hidden"
+                            animate="visible"
+                            custom={i}
+                        >
+                            <MovieItem
+                                key={movie.id}
+                                ref={el => itemsRef.current[movie.id] = el}
+                                movie={movie}
+                                flippable
+                                flipUpCards={flipUpCardsHandler}
+                                leftIcon={faMagnifyingGlass}
+                                rightIcon={faCircleXmark}
+                                leftIconTitle="View details"
+                                rightIconTitle="Remove movie from the Watched"
+                                rightAction={moviesCtx.removeMovieFromWatched}
+                                buttonName="Watch"
+                                buttonTitle={"Rewatch movie"}
+                                buttonClickHandler={() => window.open('https://rezka.ag/', '_blank', 'noopener,noreferrer')}
+                                badge={movie.liked ? faThumbsUp : faThumbsDown}
+                            />
+                        </motion.div>
+                    ))}
             </List>
         );
     }

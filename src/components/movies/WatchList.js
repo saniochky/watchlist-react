@@ -23,36 +23,36 @@ const WatchList = (props) => {
                     .filter(props.filterYear)
                     .filter(props.filterRating)
                     .map((movie, i) => (
-                    <motion.div
-                        key={movie.id}
-                        variants={{
-                            hidden: {opacity: 0, y: 50},
-                            visible: (i) => ({
-                                opacity: 1,
-                                y: 0,
-                                transition: {delay: i * 0.1}
-                            }),
-                        }}
-                        initial="hidden"
-                        animate="visible"
-                        custom={i}
-                    >
-                        <MovieItem
-                            movie={movie}
-                            leftIcon={faThumbsUp}
-                            rightIcon={faThumbsDown}
-                            leftIconTitle="Like"
-                            rightIconTitle="Dislike"
-                            leftAction={moviesCtx.likeMovie}
-                            rightAction={moviesCtx.dislikeMovie}
-                            buttonName="Remove"
-                            buttonTitle="Remove movie from Watchlist"
-                            buttonHoverColor="red"
-                            buttonBacklightHoverColor="RED"
-                            buttonClickHandler={moviesCtx.removeMovieFromWatchlist}
-                        />
-                    </motion.div>
-                ))}
+                        <motion.div
+                            key={movie.id}
+                            variants={{
+                                hidden: {opacity: 0, y: 50},
+                                visible: (i) => ({
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: {delay: i * 0.1}
+                                }),
+                            }}
+                            initial="hidden"
+                            animate="visible"
+                            custom={i}
+                        >
+                            <MovieItem
+                                movie={movie}
+                                leftIcon={faThumbsUp}
+                                rightIcon={faThumbsDown}
+                                leftIconTitle="Like"
+                                rightIconTitle="Dislike"
+                                leftAction={moviesCtx.likeMovie}
+                                rightAction={moviesCtx.dislikeMovie}
+                                buttonName="Remove"
+                                buttonTitle="Remove movie from Watchlist"
+                                buttonHoverColor="red"
+                                buttonBacklightHoverColor="RED"
+                                buttonClickHandler={moviesCtx.removeMovieFromWatchlist}
+                            />
+                        </motion.div>
+                    ))}
             </List>
         );
     }

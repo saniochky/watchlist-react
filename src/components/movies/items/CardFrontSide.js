@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import LoadingIndicator from '../../ui/LoadingIndicator';
 
 import styles from './CardFrontSide.module.css';
 
@@ -20,7 +19,7 @@ const CardFrontSide = (props) => {
     };
 
     return (
-        props.loading ? <div className={styles.card}><LoadingIndicator/></div> : <div
+        <div
             className={styles.card}
             onMouseEnter={() => setControlsVisible(true)}
             onMouseLeave={() => setControlsVisible(false)}
@@ -77,6 +76,10 @@ const CardFrontSide = (props) => {
                     }}
                 >{props.buttonName}</button>}
             </div>
+            {props.badge &&
+                <div className={styles.badge} style={{backgroundColor: props.movie.liked ? 'darkgreen' : 'darkred'}}>
+                    <FontAwesomeIcon icon={props.badge}/>
+                </div>}
         </div>
     );
 };

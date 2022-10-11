@@ -40,6 +40,7 @@ const MovieItem = forwardRef((props, ref) => {
             buttonHoverColor={props.buttonHoverColor}
             buttonBacklightHoverColor={props.buttonBacklightHoverColor}
             buttonClickHandler={props.buttonClickHandler}
+            badge={props.badge}
         />
     );
 
