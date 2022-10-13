@@ -30,6 +30,22 @@ I have also written a custom hook **useHttp**, which helps load and transform da
 
 Was used to implement routing in the app.
 
+### react-redux
+
+Was used to store cross-component movies state.
+
+### @reduxjs/toolkit
+
+Was used to simplify work with redux.
+
+### react-select
+
+Was used to create flexible select input control for movies sorting.
+
+### rc-slider
+
+Was used to create sliders in movie filter.
+
 ### framer-motion
 
 Was used to add animations across the app.
@@ -52,8 +68,12 @@ For login and overall user information I use my own [API](https://github.com/san
 
 For movie recommendations and, eventually, across the application, I use [TMDB API](https://www.themoviedb.org/documentation/api).
 
+## Design
+
+The design of the app is not the best. I tried to make it as good as possible but I am not much a designer.
+
 ## Future releases
 
 ~~I plan to add a login page and write a backend for this app~~ (done).
 
-I am also working on a mobile version of the app. Furthermore, I want to add movie filters and search, and user search. I hope that these and many other updates will be available in the nearest future.
+I am also working on a mobile version of the app. Furthermore, I want to add ~~movie filters~~ (done), movie and user search. I hope that these and many other updates will be available in the nearest future.
