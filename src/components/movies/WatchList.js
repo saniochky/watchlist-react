@@ -1,24 +1,29 @@
-import {useContext} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {motion} from 'framer-motion';
-import List from '../ui/List';
 import MovieItem from './items/MovieItem';
+import List from '../ui/List';
 import LoadingIndicator from '../ui/LoadingIndicator';
-import MoviesContext from '../../store/movies-context';
+import {addMovieToWatched, removeMovieFromWatchlist} from '../../store/redux-store';
 import {faThumbsUp, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
 const WatchList = (props) => {
-    const moviesCtx = useContext(MoviesContext);
+    const dispatch = useDispatch();
+    const watchlist = useSelector(state => state.watchlist);
+    const watchlistCount = watchlist.length;
+    const isLoading = useSelector(state => state.isLoading);
+    const error = useSelector(state => state.error);
 
-    if (moviesCtx.isLoading) return <LoadingIndicator/>;
+    if (isLoading) return <LoadingIndicator/>;
 
-    if (moviesCtx.error) return <h2>Oops, something went wrong. Try Again!</h2>;
+    if (error) return <h2>Oops, something went wrong. Try Again!</h2>;
 
     let content = <h3>The Watchlist is empty.</h3>;
 
-    if (moviesCtx.watchlistCount > 0) {
+    if (watchlistCount > 0) {
+        const movies = [...watchlist];
         content = (
             <List>
-                {moviesCtx.watchlist.sort(props.sortBy)
+                {movies.sort(props.sortBy)
                     .filter(props.filterGenres)
                     .filter(props.filterYear)
                     .filter(props.filterRating)
@@ -43,13 +48,21 @@ const WatchList = (props) => {
                                 rightIcon={faThumbsDown}
                                 leftIconTitle="Like"
                                 rightIconTitle="Dislike"
-                                leftAction={moviesCtx.likeMovie}
-                                rightAction={moviesCtx.dislikeMovie}
+                                leftAction={movieData => dispatch(addMovieToWatched({
+                                    id: movieData.id,
+                                    addedDate: new Date().toISOString(),
+                                    liked: true
+                                }))}
+                                rightAction={movieData => dispatch(addMovieToWatched({
+                                    id: movieData.id,
+                                    addedDate: new Date().toISOString(),
+                                    liked: false
+                                }))}
                                 buttonName="Remove"
                                 buttonTitle="Remove movie from Watchlist"
                                 buttonHoverColor="red"
                                 buttonBacklightHoverColor="RED"
-                                buttonClickHandler={moviesCtx.removeMovieFromWatchlist}
+                                buttonClickHandler={movieData => dispatch(removeMovieFromWatchlist(movieData))}
                             />
                         </motion.div>
                     ))}

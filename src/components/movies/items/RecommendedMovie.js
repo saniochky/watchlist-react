@@ -1,14 +1,14 @@
-import {useContext} from 'react';
+import {useDispatch} from 'react-redux';
 import {motion} from 'framer-motion';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {addMovieToWatchlist, addMovieToWatched} from '../../../store/redux-store';
 import {faClapperboard, faPlus, faThumbsDown, faThumbsUp} from '@fortawesome/free-solid-svg-icons';
-import moviesContext from '../../../store/movies-context';
 
 import {GENRES} from '../../../constants/constants';
 import styles from './RecommendedMovie.module.css';
 
 const RecommendedMovie = ({movie, fetchMovie}) => {
-    const moviesCtx = useContext(moviesContext);
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.recommendations}>
@@ -27,7 +27,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         title="Like"
                         className={styles.like}
                         onClick={() => {
-                            moviesCtx.likeMovie(movie);
+                            dispatch(addMovieToWatched({id: movie.id, addedDate: new Date().toISOString(), liked: true}));
                             fetchMovie();
                         }}
                     >
@@ -40,10 +40,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         title="Add to Watchlist"
                         className={styles.add}
                         onClick={() => {
-                            moviesCtx.addMovieToWatchlist({
-                                id: movie.id,
-                                addedDate: new Date().toISOString(),
-                            });
+                            dispatch(addMovieToWatchlist({id: movie.id, addedDate: new Date().toISOString()}));
                             fetchMovie()
                         }}>
                         <FontAwesomeIcon icon={faPlus} className={styles.icon}/>
@@ -56,7 +53,7 @@ const RecommendedMovie = ({movie, fetchMovie}) => {
                         title="Dislike"
                         className={styles.dislike}
                         onClick={() => {
-                            moviesCtx.dislikeMovie(movie);
+                            dispatch(addMovieToWatched({id: movie.id, addedDate: new Date().toISOString(), liked: false}));
                             fetchMovie();
                         }}
                     >

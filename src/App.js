@@ -1,5 +1,6 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 import Layout from './components/layout/Layout';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
@@ -9,11 +10,26 @@ import WatchedPage from './pages/WatchedPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import AuthContext from './store/auth-context';
+import {fetchMovies} from './store/redux-store';
 
 import './App.css';
 
 const App = () => {
     const authCtx = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const error = useSelector(state => state.error);
+
+    useEffect(() => {
+        if (authCtx.isLoggedIn) {
+            dispatch(fetchMovies())
+        }
+    }, [authCtx, dispatch]);
+
+    useEffect(() => {
+        if (['Invalid token', 'Token expired'].includes(error)) {
+            authCtx.logout()
+        }
+    }, [authCtx, error]);
 
     return (
         <Layout>
