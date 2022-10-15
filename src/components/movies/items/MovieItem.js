@@ -1,4 +1,5 @@
-import {useState, useImperativeHandle, forwardRef} from 'react';
+import {useState, useImperativeHandle, forwardRef, useRef} from 'react';
+import {useInView} from 'framer-motion';
 import ReactCardFlip from 'react-card-flip';
 import CardFrontSide from './CardFrontSide';
 import CardBackSide from './CardBackSide';
@@ -7,8 +8,10 @@ import BacklightCard from '../../ui/BacklightCard';
 import styles from './MovieItem.module.css';
 
 const MovieItem = forwardRef((props, ref) => {
-    useImperativeHandle(ref, () => ({flipUpCard: flipUpCardHandler}));
+    useImperativeHandle(ref, () => ({flipUpCard: flipUpCardHandler, itemInView: inView}));
     const [isFlipped, setIsFlipped] = useState(false);
+    const itemRef = useRef(null);
+    const inView = useInView(itemRef, {once: true, margin: "0px 0px -8% 0px"});
     const flippable = props.flippable || false;
 
     const flipCardHandler = () => {
@@ -44,9 +47,9 @@ const MovieItem = forwardRef((props, ref) => {
         />
     );
 
-    if (flippable) {
-        return (
-            <li className={styles.item}>
+    return (
+        <li className={styles.item} ref={itemRef}>
+            {flippable ?
                 <ReactCardFlip
                     isFlipped={isFlipped}
                     flipDirection="horizontal"
@@ -61,16 +64,10 @@ const MovieItem = forwardRef((props, ref) => {
                             flipCard={flipCardHandler}
                         />
                     </BacklightCard>
-                </ReactCardFlip>
-            </li>
-        );
-    }
-
-    return (
-        <li className={styles.item}>
-            <BacklightCard>
-                {frontSide}
-            </BacklightCard>
+                </ReactCardFlip> :
+                <BacklightCard>
+                    {frontSide}
+                </BacklightCard>}
         </li>
     );
 });

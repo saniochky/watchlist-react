@@ -138,8 +138,11 @@ const removeMovieFromWatchlist = createAsyncThunk('movies/removeMovieFromWatchli
 
 const removeMovieFromWatched = createAsyncThunk('movies/removeMovieFromWatched', async (movieData) => {
     console.log(await removeMovieFromWatchedAsync(movieData.id));
-    console.log(await addMovieToWatchlistAsync({id: movieData.id, addedDate: new Date().toISOString()}));
-    return movieData.id;
+    const addedDate = new Date().toISOString();
+    console.log(await addMovieToWatchlistAsync({id: movieData.id, addedDate: addedDate}));
+    const movie = await fetchMovieByIdAsync(movieData.id);
+    movie.addedDate = addedDate;
+    return movie;
 });
 
 const initialState = {
@@ -194,8 +197,8 @@ const movieSlice = createSlice({
                 state.watched = state.watched.filter(movie => movie.id !== action.meta.arg.id);
             })
             .addCase(removeMovieFromWatched.fulfilled, (state, action) => {
-                if (!state.watchlist.some(movie => movie.id === action.payload)) {
-                    state.watchlist.push({id: action.payload, addedDate: new Date().toISOString()});
+                if (!state.watchlist.some(movie => movie.id === action.payload.id)) {
+                    state.watchlist.push(action.payload);
                 }
             });
     },
