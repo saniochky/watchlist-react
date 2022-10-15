@@ -148,7 +148,7 @@ const removeMovieFromWatched = createAsyncThunk('movies/removeMovieFromWatched',
 const initialState = {
     watchlist: [],
     watched: [],
-    isLoading: false,
+    isLoading: true,
     error: null,
 };
 
