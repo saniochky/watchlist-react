@@ -1,4 +1,5 @@
 import {createContext, useState} from 'react';
+import {API} from '../constants/constants';
 
 const AuthContext = createContext({
     token: '',
@@ -24,7 +25,7 @@ export const AuthContextProvider = (props) => {
 
     const registerHandler = (username, password) => {
         setLoading(true);
-        return fetch('https://movie-watchlister-api.herokuapp.com/api/auth/register', {
+        return fetch(`${API}auth/register`, {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {
@@ -50,7 +51,7 @@ export const AuthContextProvider = (props) => {
 
     const loginHandler = (username, password) => {
         setLoading(true);
-        fetch('https://movie-watchlister-api.herokuapp.com/api/auth/login', {
+        fetch(`${API}auth/login`, {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {

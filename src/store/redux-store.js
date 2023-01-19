@@ -1,4 +1,5 @@
 import {configureStore, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {API} from '../constants/constants';
 
 const fetchMovieByIdAsync = async (movieId) => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=f42aecfe4bb38f5459141677e82f1941`);
@@ -11,7 +12,7 @@ const fetchMovieByIdAsync = async (movieId) => {
 };
 
 const fetchMoviesAsync = async () => {
-    const response = await fetch('https://movie-watchlister-api.herokuapp.com/api/movies/', {
+    const response = await fetch(`${API}movies/`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ const fetchMoviesAsync = async () => {
 };
 
 const addMovieToWatchlistAsync = async (movieData) => {
-    const response = await fetch('https://movie-watchlister-api.herokuapp.com/api/movies/watchlist/add', {
+    const response = await fetch(`${API}movies/watchlist/add`, {
         method: 'PATCH',
         body: JSON.stringify(movieData),
         headers: {
@@ -45,7 +46,7 @@ const addMovieToWatchlistAsync = async (movieData) => {
 };
 
 const addMovieToWatchedAsync = async (movieData) => {
-    const response = await fetch('https://movie-watchlister-api.herokuapp.com/api/movies/watched/add', {
+    const response = await fetch(`${API}movies/watched/add`, {
         method: 'PATCH',
         body: JSON.stringify(movieData),
         headers: {
@@ -62,7 +63,7 @@ const addMovieToWatchedAsync = async (movieData) => {
 };
 
 const removeMovieFromWatchlistAsync = async (movieId) => {
-    const response = await fetch('https://movie-watchlister-api.herokuapp.com/api/movies/watchlist/remove', {
+    const response = await fetch(`${API}movies/watchlist/remove`, {
         method: 'PATCH',
         body: JSON.stringify({id: movieId}),
         headers: {
@@ -79,7 +80,7 @@ const removeMovieFromWatchlistAsync = async (movieId) => {
 };
 
 const removeMovieFromWatchedAsync = async (movieId) => {
-    const response = await fetch('https://movie-watchlister-api.herokuapp.com/api/movies/watched/remove', {
+    const response = await fetch(`${API}movies/watched/remove`, {
         method: 'PATCH',
         body: JSON.stringify({id: movieId}),
         headers: {

@@ -17,6 +17,7 @@ const Login = () => {
                 <button onClick={authCtx.clearError}>Close</button>
             </Modal>}
             <h2>Login Into Account</h2>
+            <p>Use username <em>testuser</em> and password <em>testtest</em> to login into demo account</p>
             <AuthForm buttonText="Login" loading={authCtx.loading} onSubmit={authCtx.login}/>
             <p>Do not have an account? <span onClick={() => navigate('/register')}>Register</span></p>
         </div>
