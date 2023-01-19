@@ -60,7 +60,7 @@ Was used to create the flip effect on the Watchlist and Watched pages.
 
 ## Hosting
 
-The app is hosted on [netlify](https://www.netlify.com/) under the domain https://movie-watchlister.netlify.app/. (currently API is not hosted so the app won't work)
+The app is hosted on [netlify](https://www.netlify.com/) under the domain https://movie-watchlister.netlify.app/.
 
 ## API
 
