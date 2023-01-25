@@ -3,7 +3,7 @@
     width: 95%;
     max-width: 25rem;
     border-radius: 6px;
-    background-color: #2b7a77;
+    background-color: var(--color-green);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: center;
@@ -23,17 +23,17 @@
 }
 
 .login em {
-    color: #f07c41;
+    color: var(--color-orange);
     text-decoration-style: dashed;
 }
 
+
 .login span {
-    color: #17242a;
-    text-decoration: #17242a underline dotted;
+    color: var(--color-darkgreen);
+    text-decoration: var(--color-darkgreen) underline dotted;
     cursor: pointer;
 }
-
 .login span:hover {
-    color: #f07c41;
-    text-decoration: #f07c41 underline dotted;
+    color: var(--color-orange);
+    text-decoration: var(--color-orange) underline dotted;
 }

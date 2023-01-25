@@ -1,4 +1,5 @@
 import {useState, useEffect, useCallback} from 'react';
+import {useSelector} from 'react-redux';
 import {motion, AnimatePresence} from 'framer-motion';
 import useHttp from '../../hooks/use-http';
 import RecommendedMovie from './items/RecommendedMovie';
@@ -7,6 +8,8 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import {SORTING_VALUES as sorting} from '../../constants/constants';
 
 const Recommendation = () => {
+    const watchlist = useSelector(state => state.watchlist);
+    const watched = useSelector(state => state.watched);
     const [movie, setMovie] = useState(null);
     const {isLoading, error, sendRequest} = useHttp();
 
@@ -14,19 +17,20 @@ const Recommendation = () => {
         setMovie(null);
         sendRequest({url: `https://api.themoviedb.org/3/discover/movie?api_key=f42aecfe4bb38f5459141677e82f1941&language=en-US&sort_by=${sorting[Math.floor(Math.random() * sorting.length)]}&include_adult=${Math.random() > 0.5}&include_video=false&page=${Math.ceil(Math.random() * 5)}&year=${Math.floor(Math.random() * 40) + 1983}&vote_count.gte=2000&vote_average.gte=0.4`},
             (data) => {
-                if (data.results.length > 0) {
-                    const chosenMovie = data.results[Math.floor(Math.random() * data.results.length)];
+                const unseenMovies = data.results.filter(movie => !watchlist.some(watchlistMovie => watchlistMovie.id === movie.id) && !watched.some(watchedMovie => watchedMovie.id === movie.id));
+                if (unseenMovies.length > 0) {
+                    const chosenMovie = unseenMovies[Math.floor(Math.random() * unseenMovies.length)];
                     chosenMovie.poster = `https://image.tmdb.org/t/p/w500${chosenMovie.poster_path}`;
                     setMovie(chosenMovie);
                 } else {
                     fetchMovie();
                 }
             });
-    }, [sendRequest]);
+    }, [sendRequest, watchlist, watched]);
 
     useEffect(() => {
         fetchMovie();
-    }, [fetchMovie]);
+    }, []);
 
     if (error) return <h2>Oops, something went wrong. Try Again!</h2>;
 

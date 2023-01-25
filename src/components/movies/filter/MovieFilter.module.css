@@ -33,5 +33,5 @@
 }
 
 .filterby button:hover {
-    color: #f07c41;
+    color: var(--color-orange);
 }

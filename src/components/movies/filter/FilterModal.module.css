@@ -11,18 +11,18 @@
     height: 4rem;
     margin: 1rem 0 0;
     text-align: center;
-    color: #2b7a77;
-    border: #2b7a77 1px solid;
+    color: var(--color-green);
+    border: var(--color-green) 1px solid;
     border-radius: 8px;
-    background-color: #17242a;
+    background-color: var(--color-darkgreen);
     font: inherit;
     cursor: pointer;
 }
 
 .item:hover, .item.selected {
-    background-color: #17242a;
-    color: #f07c41;
-    border-color: #f07c41;
+    background-color: var(--color-darkgreen);
+    color: var(--color-orange);
+    border-color: var(--color-orange);
 }
 
 .range {
@@ -36,7 +36,7 @@
 }
 
 .rangeValues span {
-    color: #17242a;
+    color: var(--color-darkgreen);
     font: inherit;
     font-weight: bold;
 }
@@ -45,7 +45,7 @@
     font: inherit;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #f07c41;
+    border: 1px solid var(--color-orange);
     margin-top: 1rem;
     padding: 0.5rem 2rem;
     border-radius: 25px;
@@ -53,7 +53,7 @@
 }
 
 .btn:hover {
-    background-color: #f07c41;
+    background-color: var(--color-orange);
     color: white;
 }
 

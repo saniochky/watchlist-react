@@ -5,7 +5,7 @@
     align-content: flex-start;
     padding: 20px;
     background-color: rgba(222, 242, 241, 0.7);
-    border: 3px solid #2b7a77;
+    border: 3px solid var(--color-green);
     border-radius: 10px;
 }
 
@@ -33,9 +33,9 @@
     position: relative;
     font-size: 4rem !important;
     font-weight: 600;
-    color: #2b7a77;
+    color: var(--color-green);
     padding: 0.3rem 4.5rem;
-    border: 3px solid #2b7a77;
+    border: 3px solid var(--color-green);
     border-radius: 2rem;
     cursor: pointer;
     transition: all 0.5s;
@@ -51,7 +51,7 @@
 }
 
 .next:hover {
-    background-color: #17242a;
+    background-color: var(--color-darkgreen);
     padding-left: 3.5rem;
     padding-right: 5.5rem;
 }
@@ -88,7 +88,7 @@
 
 .like {
     background-color: darkgreen;
-    border: 2px solid #17242a;
+    border: 2px solid var(--color-darkgreen);
     border-radius: 50%;
     padding: 1rem;
     cursor: pointer;
@@ -100,7 +100,7 @@
 
 .dislike {
     background-color: #c2240b;
-    border: 2px solid #17242a;
+    border: 2px solid var(--color-darkgreen);
     border-radius: 50%;
     padding: 1rem;
     cursor: pointer;
@@ -111,10 +111,10 @@
 }
 
 .add {
-    background-color: #17242a;
-    color: #2b7a77;
+    background-color: var(--color-darkgreen);
+    color: var(--color-green);
     padding: 1rem;
-    border: 2px solid #2b7a77;
+    border: 2px solid var(--color-green);
     border-radius: 3rem;
     cursor: pointer;
 }
@@ -124,6 +124,6 @@
 }
 
 .add:hover {
-    color: #f07c41;
-    border-color: #f07c41;
+    color: var(--color-orange);
+    border-color: var(--color-orange);
 }

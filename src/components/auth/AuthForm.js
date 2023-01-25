@@ -50,7 +50,7 @@ const AuthForm = (props) => {
             </div>
             <div className={styles.actions}>
                 <button type="submit" disabled={props.loading || !formIsValid}>
-                    {props.loading ? "Loading..." : props.buttonText}
+                    {props.loading ? 'Loading...' : props.buttonText}
                 </button>
             </div>
         </form>

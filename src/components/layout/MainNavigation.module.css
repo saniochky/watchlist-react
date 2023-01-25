@@ -4,19 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #17242a;
+    background-color: var(--color-darkgreen);
     padding: 0 10%;
 }
 
 .logo {
     font-size: 2rem;
-    color: #2b7a77;
+    color: var(--color-green);
     font-weight: bold;
     cursor: pointer;
 }
 
 .logo:hover {
-    color: #f07c41;
+    color: var(--color-orange);
 }
 
 .header ul {
@@ -40,8 +40,8 @@
 .header button {
     font: inherit;
     background-color: transparent;
-    border: 1px solid #def2f1;
-    color: #def2f1;
+    border: 1px solid var(--color-lightgreen);
+    color: var(--color-lightgreen);
     font-weight: bold;
     padding: 0.5rem 1.5rem;
     border-radius: 6px;
@@ -51,7 +51,7 @@
 .header a:hover,
 .header a:active,
 .header a.active {
-    color: #f07c41;
+    color: var(--color-orange);
 }
 
 .header button:hover {
@@ -65,7 +65,7 @@
 }
 
 .badge {
-    background-color: #2b7a77;
+    background-color: var(--color-green);
     color: white;
     border-radius: 12px;
     padding: 0 0.7rem;

@@ -1,26 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 * {
-  box-sizing: border-box;
-  margin: 0;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  background-color: #feffff;
-  background-image: url("../public/background-tree.png");
-  background-position: top 4rem right -25rem;
-  background-repeat: no-repeat;
-  background-size: 67.5rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: #feffff;
+    background-image: url("../public/background-tree.png");
+    background-position: top 4rem right -25rem;
+    background-repeat: no-repeat;
+    background-size: 67.5rem;
+}
+
+:root {
+    --color-orange: #f07c41;
+    --color-green: #2b7a77;
+    --color-darkgreen: #17242a;
+    --color-lightgreen: #def2f1;
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #17242a;
+    font-size: 2.5rem;
+    color: var(--color-darkgreen)
 }
 
 h2 {
-  font-size: 1.5rem;
-  color: #17242a;
+    font-size: 1.5rem;
+    color: var(--color-darkgreen);
 }

@@ -10,8 +10,13 @@ const AuthContext = createContext({
     },
     logout: () => {
     },
+    changePassword: (oldPassword, newPassword) => {
+    },
+    deleteAccount: () => {
+    },
     loading: false,
     error: null,
+    success: null,
     clearError: () => {
     },
 });
@@ -20,6 +25,7 @@ export const AuthContextProvider = (props) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     const userIsLoggedIn = !!token;
 
@@ -67,8 +73,8 @@ export const AuthContextProvider = (props) => {
             }
         }).then(data => {
             localStorage.setItem('token', data.token);
-            setLoading(false);
             setToken(data.token);
+            setLoading(false);
         }).catch(error => {
             setLoading(false);
             setError(error.message);
@@ -81,8 +87,65 @@ export const AuthContextProvider = (props) => {
         setToken(null);
     };
 
+    const changePasswordHandler = (oldPassword, newPassword) => {
+        setLoading(true);
+        fetch(`${API}users`, {
+            method: 'PATCH',
+            body: JSON.stringify({oldPassword, newPassword}),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            },
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            }
+        }).then(data => {
+            localStorage.setItem('token', data.token);
+            setToken(data.token);
+            setLoading(false);
+            setSuccess('Password changed successfully');
+        }).catch(error => {
+            setLoading(false);
+            setError(error.message);
+            return {message: 'error'};
+        });
+    };
+
+    const deleteAccountHandler = () => {
+        fetch(`${API}users`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            },
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            }
+        }).then(data => {
+            localStorage.removeItem('token');
+            setToken(null);
+        }).catch(error => {
+            setError(error.message);
+            return {message: 'error'};
+        });
+    };
+
     const clearErrorHandler = () => {
         setError(null);
+    };
+
+    const clearSuccessHandler = () => {
+        setSuccess(null);
     };
 
     const context = {
@@ -91,9 +154,13 @@ export const AuthContextProvider = (props) => {
         register: registerHandler,
         login: loginHandler,
         logout: logoutHandler,
+        changePassword: changePasswordHandler,
+        deleteAccount: deleteAccountHandler,
         loading: loading,
         error: error,
+        success: success,
         clearError: clearErrorHandler,
+        clearSuccess: clearSuccessHandler,
     };
 
     return (

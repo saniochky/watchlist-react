@@ -19,10 +19,10 @@
     width: 44px;
     height: 44px;
     margin: 6px;
-    border: 6px solid #17242a;
+    border: 6px solid;
     border-radius: 50%;
     animation: ldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #17242a transparent transparent transparent;
+    border-color: var(--color-darkgreen) transparent transparent transparent;
 }
 
 .ldsRing div:nth-child(1) {

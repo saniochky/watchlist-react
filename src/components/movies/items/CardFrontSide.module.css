@@ -46,7 +46,7 @@
 
 .title h3 {
     display: -webkit-box;
-    color: #17242a;
+    color: var(--color-darkgreen);
     font-weight: 600;
     overflow: hidden;
     -webkit-line-clamp: 2;
@@ -75,8 +75,8 @@
 
 .button {
     padding: 0.4rem 0.7rem;
-    color: #17242a;
-    border: 2px solid #17242a;
+    color: var(--color-darkgreen);
+    border: 2px solid var(--color-darkgreen);
     border-radius: 8px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -85,7 +85,7 @@
 .badge {
     height: 3rem;
     width: 3rem;
-    border: solid 2px #17242a;
+    border: solid 2px var(--color-darkgreen);
     border-radius: 50%;
     position: absolute;
     top: 0;
