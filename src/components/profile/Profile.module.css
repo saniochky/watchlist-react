@@ -1,3 +1,11 @@
+.cancel-btn {
+    border-color: lightgrey !important;
+}
+.cancel-btn:hover {
+    background-color: darkred !important;
+    border-color: darkred;
+}
+
 .form {
     display: flex;
     flex-direction: column;

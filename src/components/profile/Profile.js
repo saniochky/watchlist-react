@@ -50,7 +50,7 @@ const Profile = () => {
             {deleteAccount && <Modal onClose={() => setDeleteAccount(false)}>
                 <h2>Do you really want to delete your account?</h2>
                 <button onClick={authCtx.deleteAccount}>Yes</button>
-                <button onClick={() => setDeleteAccount(false)}>No</button>
+                <button className={styles['cancel-btn']} onClick={() => setDeleteAccount(false)}>No</button>
             </Modal>}
             <h2>Change password</h2>
             <form className={styles.form} onSubmit={submitHandler}>
